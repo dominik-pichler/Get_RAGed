@@ -47,14 +47,15 @@ But why not simply RAG?
 ## Graph RAG
 
 ### Setup / Architeture
-The proposed Architecture is split up into three phases (based on Peng et al. (2024) [^1] .) 
-1) Graph-based Indexing
+The proposed Architecture is split up into three phases (based on Peng et al. (2024) [^1] .)
+
+#### Graph-based Indexing
 
 ![img_2.png](img_2.png)
 
-2) Graph-based Retrieval
+#### Graph-based Retrieval
 ![img_3.png](img_3.png)
-3) Graph-enhanced Generation
+#### Graph-enhanced Generation
 ![img_4.png](img_4.png)
 
 # Data used
