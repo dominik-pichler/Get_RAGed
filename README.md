@@ -30,6 +30,13 @@ Expected Queries could for example be:
 
 From this point, it's straight forward to understand the utility of such system. 
 
+# How to use
+## Mac
+1. Install `uv` (tested successfully with _uv inituv 0.7.19 (Homebrew 2025-07-02)_)
+2. init project via `uv init`
+3. Create and activate env via `uv init`
+
+
 # Approach
 
 I setup an [OpenWeb UI](https://github.com/open-webui/open-webui) as frontend and used Graph RAG in the Background.
@@ -50,11 +57,19 @@ But why not simply RAG?
 The proposed Architecture is split up into three phases (based on Peng et al. (2024) [^1] .)
 
 #### Graph-based Indexing
-
+For this stage, a self-constructed Graph has been selected. (See [Data Section](#Graph Schema))
 ![img_2.png](img_2.png)
+
+TODO: Soll hier bei dem Graph noch was angepasst werden? 
 
 #### Graph-based Retrieval
 ![img_3.png](img_3.png)
+
+##### Query Enhancement
+##### Retrieval Granularity
+##### Retrieval Paradigm
+#### Retriever
+#### Knowledge Enhancement
 #### Graph-enhanced Generation
 ![img_4.png](img_4.png)
 
@@ -72,8 +87,36 @@ This project builds on top of an existing database that contains the following i
 
 
 ## Tech Stack
- GraphRAG Package by Microsoft
+ ### Frontend: 
+I used [Kotaemon](https://github.com/Cinnamon/kotaemon) because of it's advanced Graph UI Features which are crucial for this project
+On Mac, the frontend can be setup via: 
+```
+# To run docker with platform linux/arm64
+docker run \
+-e GRADIO_SERVER_NAME=0.0.0.0 \
+-e GRADIO_SERVER_PORT=7860 \
+-v ./ktem_app_data:/app/ktem_app_data \
+-p 7860:7860 -it --rm \
+--platform linux/arm64 \
+ghcr.io/cinnamon/kotaemon:main-lite
+```
 
+docker run \
+-e GRADIO_SERVER_NAME=0.0.0.0 \
+-e GRADIO_SERVER_PORT=7860 \
+-v /Users/dominikpichler/Documents/Git/BRZ/Get_RAGed/ktem_app_data:/app/ktem_app_data \
+-p 7860:7860 -it --rm \
+--platform linux/arm64 \
+ghcr.io/cinnamon/kotaemon:main-lite
+
+### Backend: 
+For fast shipping and rapid prototyping (as well as for good compatibility with Kotaemon) I used [nano-graph-rag](https://github.com/gusye1234/nano-graphrag)
+
+
+### LLM
+I used llama3.1:8b
+
+In order to work for the application, please stick to the [koteamon guide](https://cinnamon.github.io/kotaemon/local_model/)
 
 ## Graph Schema
 ### Nodes:
